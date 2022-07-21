@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+<section id="LoginForm">
+  <div class="container-lg">
+    <div class="row justify-content-center my-1">
+      <div class="col-lg-6">
+        <h1 class="fs-2 mt-2">Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <label for="username" class="form-label mt-0">Email</label>
+          <div class="form-group input-group mb-0">
+            <span class="input-group-text">
+              <i class="bi bi-at"></i>
+            </span>
+            <input type="email" name="email" [ngClass]="{'is-invalid':loginForm.controls.email.touched && loginForm.controls.email.errors}" class="form-control" id="username" placeholder="Username" formControlName="email">
+          </div>
+          <div class="text-danger" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors">
+            <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.['required']">* required:true</div>
+            <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.['email']">* email : false</div>
+            <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.['minlength']">* Longueur min 6 caractères</div>
+          </div>
+          <label for="password" class="form-label mt-2">Password</label>
+          <div class="form-group input-group mb-0">
+            <span class="input-group-text">
+              <i class="bi bi-lock-fill"></i>
+            </span>
+            <input type="text" name="Password" [ngClass]="{'is-invalid':loginForm.controls.password.touched && loginForm.controls.password.errors}" class="form-control" id="password" placeholder="Password" formControlName="password">
+          </div>
+          <div class="text-danger" *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors">
+            <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.['required']">* required:true</div>
+            <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.['minlength']">* Longueur min 5 caractères</div>
+          </div>
+          <button class="btn btn-primary mt-2" type="submit" [disabled]="!loginForm.valid">Login</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
