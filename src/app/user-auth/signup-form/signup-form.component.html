@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+<section id="LoginForm">
+  <div class="container-lg">
+    <div class="row justify-content-center my-5 p-5">
+      <div class="col-lg-6 card bg-light p-5 ">
+        <h1 class="text-center fs-2 mt-2">Sign Up</h1>
+        <form [formGroup]="SignupForm" (ngSubmit)="onSubmit()">
+          <label for="username" class="form-label mt-0">Email</label>
+          <div class="form-group input-group mb-0">
+            <span class="input-group-text">
+              <i class="bi bi-at"></i>
+            </span>
+            <input type="email" name="email" [ngClass]="{'is-invalid':SignupForm.controls.email.touched && SignupForm.controls.email.errors}" class="form-control" id="username" placeholder="Username" formControlName="email">
+          </div>
+          <div class="text-danger" *ngIf="SignupForm.controls.email.touched && SignupForm.controls.email.errors">
+            <div *ngIf="SignupForm.controls.email.touched && SignupForm.controls.email.errors?.['required']">* required:true</div>
+            <div *ngIf="SignupForm.controls.email.touched && SignupForm.controls.email.errors?.['email']">* email : false</div>
+            <div *ngIf="SignupForm.controls.email.touched && SignupForm.controls.email.errors?.['minlength']">* Longueur min 6 caractères</div>
+          </div>
+          <label for="password" class="form-label mt-2">Password</label>
+          <div class="form-group input-group mb-0">
+            <span class="input-group-text">
+              <i class="bi bi-lock-fill"></i>
+            </span>
+            <input [type]="showPassword ? 'text' : 'password' " name="Password" [ngClass]="{'is-invalid':SignupForm.controls.password.touched && SignupForm.controls.password.errors}" class="form-control" id="password" placeholder="Password" formControlName="password">
+            <span class="input-group-text bg-light">
+              <i class="bi {{ showPassword ? 'bi-eye-slash' : 'bi-eye' }} "(click)='showHidePassword()'></i>
+            </span>
+          </div>
+          <div class="text-danger" *ngIf="SignupForm.controls.password.touched && SignupForm.controls.password.errors">
+            <div *ngIf="SignupForm.controls.password.touched && SignupForm.controls.password.errors?.['required']">* required:true</div>
+            <div *ngIf="SignupForm.controls.password.touched && SignupForm.controls.password.errors?.['minlength']">* Longueur min 5 caractères</div>
+          </div>
+          <label for="confirmPassword" class="form-label mt-2">confirm Password</label>
+          <div class="form-group input-group mb-0">
+            <span class="input-group-text">
+              <i class="bi bi-lock-fill"></i>
+            </span>
+            <input [type]="showPassword ? 'text' : 'password' " name="confirmPassword" [ngClass]="{'is-invalid':SignupForm.controls.confirmPassword.touched && passwordMatchError}" class="form-control" id="confirmPassword" placeholder="Confirm your Password" formControlName="confirmPassword">
+            <span class="input-group-text bg-light">
+              <i class="bi {{ showPassword ? 'bi-eye-slash' : 'bi-eye' }} "(click)='showHidePassword()'></i>
+            </span>
+          </div>
+          <div class="text-danger">
+            <div *ngIf="SignupForm.controls.confirmPassword.touched && SignupForm.controls.confirmPassword.errors?.['required']">* required:true</div>
+            <div *ngIf="passwordMatchError">Password does not match</div>
+          </div>
+          <div class="d-grid justify-content-center">
+            <button class="btn btn-primary mt-2" type="submit" [disabled]="!SignupForm.valid">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
