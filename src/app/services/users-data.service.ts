@@ -7,7 +7,7 @@ import {User} from "../user-auth/user";
   providedIn: 'root'
 })
 export class UsersDataService {
-  path="http://localhost:9000/api/user/save"
+  path="http://localhost:8080/api/"
   constructor(private http:HttpClient) {}
 
   /**
@@ -16,7 +16,7 @@ export class UsersDataService {
    *   }
    */
   public saveUser(user:User) : Observable<User> {
-    return this.http.post<User>(this.path,user)
+    return this.http.post<User>(this.path + "register",user)
   }
 
 
