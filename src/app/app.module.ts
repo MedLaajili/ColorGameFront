@@ -7,25 +7,30 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoComponent } from './demo/demo.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {LoginFormComponent} from './user-auth/login-form/login-form.component';
+import {SignupFormComponent} from './user-auth/signup-form/signup-form.component';
+import {LoginFormComponent} from './user-auth/login-form/login-form.component'
 import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import { RedElDirective } from './red-el.directive';
 import {HttpClientModule} from '@angular/common/http'
+import {UserAuthModule} from "./user-auth/user-auth.module";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemoComponent,
     NavbarComponent,
-    LoginFormComponent,
+    SignupFormComponent,
+    // LoginFormComponent,
     RedElDirective,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    FormsModule,ReactiveFormsModule,HttpClientModule
+    FormsModule, ReactiveFormsModule, HttpClientModule, UserAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent,NavbarComponent]

@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  loginSignup: boolean = false;
+
   getName(name)
   {
     alert('Attention '+name+' !')
@@ -21,5 +23,8 @@ export class AppComponent {
   {
     console.warn(val);
     this.displayVal=val;
+  }
+  loginOrSignup() {
+    this.loginSignup=!this.loginSignup
   }
 }
