@@ -8,35 +8,34 @@ import {UsersDataService} from "../../services/users-data.service";
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-  user:User = new User();
-  showPassword: boolean = false;
 
+  showPassword: boolean = false;
+  // username=null;
+  // password=null;
   constructor(private userData:UsersDataService) { }
 
   ngOnInit(): void {
   }
   loginForm=new FormGroup({
-    email:new FormControl('',[Validators.required,Validators.email]),
+    username:new FormControl('',[Validators.required,Validators.email]),
     password:new FormControl('',Validators.required)
   })
-  onSubmit() {
+
+  userLogin(username,password) {
     // console.log(data)
-    this.user.username = this.loginForm.value.email;
-    this.user.password = this.loginForm.value.password;
-    this.userData.saveUser(this.user).subscribe(data=>{
+    // let username = this.loginForm.value.username;
+    // let password = this.loginForm.value.password;
+    this.userData.loginUser(username,password).subscribe(data=>{
       console.log(data)
       // this.tokenStorage.saveToken(data.accessToken);
       // this.tokenStorage.saveUser(data)
       // this.reloadPage();
     alert("Successfully Logged in, Welcome Back ")
-    },error => alert("Login failed"))
+    },error => alert("Please enter Correct Username and Password"))
   }
 
   showHidePassword() {
     this.showPassword = !this.showPassword;
   }
 
-  reloadPage(): void{
-    window.location.reload();
-  }
 }

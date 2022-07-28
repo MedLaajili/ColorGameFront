@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http'
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http'
 import {Observable, throwError} from "rxjs";
 import {User} from "../user-auth/user";
 
@@ -8,7 +8,7 @@ import {User} from "../user-auth/user";
 })
 export class UsersDataService {
   path="http://localhost:8080/api/"
-  constructor(private http:HttpClient) {}
+  constructor(private http:HttpClient ) {}
 
   /**
    * users(){
@@ -19,6 +19,10 @@ export class UsersDataService {
     return this.http.post<User>(this.path + "register",user)
   }
 
+  loginUser(username,password): Observable<Object>{
+    let params = new HttpParams().set('username',username).set('password',password)
+    return this.http.post(this.path + "login",params)
+  }
 
 
 }

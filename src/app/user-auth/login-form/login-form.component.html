@@ -4,17 +4,17 @@
     <div class="row justify-content-center my-5 p-5">
       <div class="col-lg-6 card bg-light p-5 ">
         <h1 class="text-center fs-2 mt-2">Log in and Start playing</h1>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm" (ngSubmit)="userLogin(this.loginForm.value.username,this.loginForm.value.password)">
           <label for="username" class="form-label mt-0">Email</label>
           <div class="form-group input-group mb-0">
             <span class="input-group-text">
               <i class="bi bi-at"></i>
             </span>
-            <input type="email" name="email" [ngClass]="{'is-invalid':loginForm.controls.email.touched && loginForm.controls.email.errors}" class="form-control" id="username" placeholder="Username" formControlName="email">
+            <input type="email" name="username" [ngClass]="{'is-invalid':loginForm.controls.username.touched && loginForm.controls.username.errors}" class="form-control" id="username" placeholder="Username" formControlName="username">
           </div>
-          <div class="text-danger" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors">
-            <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.['required']">* required:true</div>
-            <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.['email']">* email : false</div>
+          <div class="text-danger" *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors">
+            <div *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.['required']">* required:true</div>
+            <div *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.['email']">* email : false</div>
           </div>
           <label for="password" class="form-label mt-2">Password</label>
           <div class="form-group input-group mb-0">
