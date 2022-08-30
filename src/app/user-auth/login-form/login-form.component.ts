@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../user";
 import {UsersDataService} from "../../services/users-data.service";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -12,7 +13,7 @@ export class LoginFormComponent implements OnInit {
   showPassword: boolean = false;
   // username=null;
   // password=null;
-  constructor(private userData:UsersDataService) { }
+  constructor(private userData:UsersDataService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +27,7 @@ export class LoginFormComponent implements OnInit {
     // let username = this.loginForm.value.username;
     // let password = this.loginForm.value.password;
     this.userData.loginUser(username,password).subscribe(data=>{
-      console.log(data)
+      this.router.navigateByUrl("/")
       // this.tokenStorage.saveToken(data.accessToken);
       // this.tokenStorage.saveUser(data)
       // this.reloadPage();

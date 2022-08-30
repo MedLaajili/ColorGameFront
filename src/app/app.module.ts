@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import {AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoComponent } from './demo/demo.component';
@@ -14,22 +14,23 @@ import { RedElDirective } from './red-el.directive';
 import {HttpClientModule} from '@angular/common/http'
 import {UserAuthModule} from "./user-auth/user-auth.module";
 import { HomeComponent } from './home/home.component';
+import { DialogComponent } from './dialog/dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     DemoComponent,
     NavbarComponent,
-    SignupFormComponent,
-    // LoginFormComponent,
     RedElDirective,
-    HomeComponent,
+    DialogComponent,
   ],
+  entryComponents:[DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
+    MatDialogModule,
     FormsModule, ReactiveFormsModule, HttpClientModule, UserAuthModule
   ],
   providers: [],

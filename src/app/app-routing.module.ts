@@ -7,7 +7,7 @@ import {SignupFormComponent} from "./user-auth/signup-form/signup-form.component
 const routes: Routes = [
   {path:'home', component: HomeComponent},
   {path:'login', component: LoginFormComponent},
-  {path:'register',component: SignupFormComponent}
+  {path:'',component: SignupFormComponent}
 ];
 
 @NgModule({
@@ -15,3 +15,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [HomeComponent,LoginFormComponent,SignupFormComponent]

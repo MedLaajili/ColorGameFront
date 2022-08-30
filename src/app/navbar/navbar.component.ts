@@ -16,4 +16,5 @@ export class NavbarComponent implements OnInit {
   loginOrSignup() {
     this.loginSignup=!this.loginSignup
   }
+  path='home'
 }
